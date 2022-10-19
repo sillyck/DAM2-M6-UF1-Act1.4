@@ -41,19 +41,20 @@ public class CrearXML {
 			for(;;) {
 				file.seek(posicio);
 				id=file.readInt();
-				for(int i=0; i<DNI.length; i++) {
-					auxDNI = file.readChar();
-					cognom[i] = auxDNI;
-				}
-				
+			
 				for(int i=0; i<nom.length; i++) {
 					auxNom = file.readChar();
-					cognom[i] = auxNom;
+					nom[i] = auxNom;
 				}
 				
 				for(int i=0; i<cognom.length; i++) {
 					auxCognom = file.readChar();
 					cognom[i] = auxCognom;
+				}
+				
+				for(int i=0; i<DNI.length; i++) {
+					auxDNI = file.readChar();
+					DNI[i] = auxDNI;
 				}
 				
 				String DNIs = new String(DNI);
@@ -62,14 +63,16 @@ public class CrearXML {
 				edad=file.readInt();
 				salari=file.readDouble();
 				
+				System.out.println("id: "+ id + " Nom: " + noms + " Cognoms: " + cognoms + " DNI: " + DNIs + " Edat: " + edad + " salari: " + salari);
+				
 				if(id<0) {
-					Element raiz = document.createElement("persona");
+					Element raiz = document.createElement("Persona");
 					
 					document.getDocumentElement().appendChild(raiz);
 					crearElemento("id", Integer.toString(id), raiz, document);
-					crearElemento("DNI", DNIs.trim() ,raiz, document);
 					crearElemento("nom", noms.trim() ,raiz, document);
 					crearElemento("cognom", cognoms.trim() ,raiz, document);
+					crearElemento("DNI", DNIs.trim() ,raiz, document);
 					crearElemento("edat", Integer.toString(edad) ,raiz, document);
 					crearElemento("salari", Double.toString(salari) ,raiz, document);
 				}
