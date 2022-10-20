@@ -65,7 +65,7 @@ public class CrearXML {
 				
 				System.out.println("id: "+ id + " Nom: " + noms + " Cognoms: " + cognoms + " DNI: " + DNIs + " Edat: " + edad + " salari: " + salari);
 				
-				if(id<0) {
+				if(id>0) {
 					Element raiz = document.createElement("Persona");
 					
 					document.getDocumentElement().appendChild(raiz);
@@ -93,7 +93,7 @@ public class CrearXML {
 		Element elem = document.createElement(datoPerso);
 		Text text = document.createTextNode(valor);
 		raiz.appendChild(elem);
-		raiz.appendChild(text);
+		elem.appendChild(text);
 	}
 
 }
